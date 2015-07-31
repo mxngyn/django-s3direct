@@ -2,6 +2,6 @@ image: bradleyg/python
 
 script:
   - apt-get update
-  - apt-get install git -y
+  - apt-get install git-core -y
   - pip install -q Django==1.8
   - python runtests.py
