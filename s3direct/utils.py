@@ -65,7 +65,7 @@ def create_upload_data(content_type, key, acl, bucket=None, cache_control=None, 
 
     signature_b64 = b64encode(signature)
 
-    structure = getattr(settings, 'S3DIRECT_URL_STRUCTURE', 'https://{0}/{1}')
+    structure = getattr(settings, 'S3DIRECT_URL_STRUCTURE', 'https://{1}.{0}')
     bucket_url = structure.format(endpoint, bucket)
 
     return_dict = {
