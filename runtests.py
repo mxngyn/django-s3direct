@@ -23,7 +23,7 @@ settings.configure(DEBUG=True,
                    AWS_SECRET_ACCESS_KEY=environ.get(
                                 'AWS_SECRET_ACCESS_KEY', ''),
                    AWS_STORAGE_BUCKET_NAME=environ.get(
-                                'AWS_STORAGE_BUCKET_NAME',
+                                'AWS_VIDEO_STORAGE_BUCKET_NAME',
                                 'test-bucket'),
                    S3DIRECT_REGION='us-east-1',
                    S3DIRECT_DESTINATIONS={

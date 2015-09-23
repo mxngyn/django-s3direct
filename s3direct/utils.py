@@ -31,7 +31,7 @@ def get_at(index, t):
 def create_upload_data(content_type, key, acl, bucket=None, cache_control=None, content_disposition=None):
     access_key = settings.AWS_ACCESS_KEY_ID
     secret_access_key = settings.AWS_SECRET_ACCESS_KEY
-    bucket = bucket or settings.AWS_STORAGE_BUCKET_NAME
+    bucket = bucket or settings.AWS_VIDEO_STORAGE_BUCKET_NAME
     region = getattr(settings, 'S3DIRECT_REGION', None)
     endpoint = REGIONS.get(region, 's3.amazonaws.com')
 
@@ -65,7 +65,7 @@ def create_upload_data(content_type, key, acl, bucket=None, cache_control=None, 
 
     signature_b64 = b64encode(signature)
 
-    structure = getattr(settings, 'S3DIRECT_URL_STRUCTURE', 'https://{0}/{1}')
+    structure = getattr(settings, 'S3DIRECT_URL_STRUCTURE', 'https://{1}.{0}')
     bucket_url = structure.format(endpoint, bucket)
 
     return_dict = {
