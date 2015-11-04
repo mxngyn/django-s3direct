@@ -6,6 +6,7 @@ from django.conf import settings
 
 from .utils import create_upload_data, get_at
 
+import calendar, time
 
 DESTINATIONS = getattr(settings, 'S3DIRECT_DESTINATIONS', None)
 
@@ -51,6 +52,8 @@ def get_upload_params(request):
         # https://aws.amazon.com/articles/1434#aws-table
         key = '%s/${filename}' % key
 
+    keyname, ext = key.split('.')
+    key = keyname + str(calendar.timegm(time.gmtime())) + "." + ext
     data = create_upload_data(content_type, key, acl, bucket, cache_control, content_disposition)
 
     return HttpResponse(json.dumps(data), content_type="application/json")
