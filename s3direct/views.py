@@ -52,6 +52,7 @@ def get_upload_params(request):
         # https://aws.amazon.com/articles/1434#aws-table
         key = '%s/${filename}' % key
 
+    # Adds timestamp to filename to prevent duplicate files in S3.
     keyname, ext = key.split('.')
     key = keyname + str(calendar.timegm(time.gmtime())) + "." + ext
     data = create_upload_data(content_type, key, acl, bucket, cache_control, content_disposition)
